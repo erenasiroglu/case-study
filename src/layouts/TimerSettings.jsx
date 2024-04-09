@@ -8,7 +8,8 @@ import Checkbox from "../components/checkbox/Checkbox";
 export const TimerSettings = ({ onThemeChange, onSwitchChange, onInputChange }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
+  const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
 
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
@@ -20,14 +21,17 @@ export const TimerSettings = ({ onThemeChange, onSwitchChange, onInputChange }) 
     onSwitchChange(isChecked);
   };
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
+  const handleTimerTitleChange = (value) => {
+    setTimerTitle(value);
     onInputChange(value);
+  };
+
+  const handleRemainingTimePeriodChange = (value) => {
+    setRemainingTimePeriod(value);
   };
 
   console.log(selectedTheme);
   console.log(isSwitchOn);
-  console.log(inputValue);
 
   return (
     <div className="timer-settings p-8">
@@ -42,20 +46,20 @@ export const TimerSettings = ({ onThemeChange, onSwitchChange, onInputChange }) 
       <Switch onSwitchChange={handleSwitchChange} />
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 mt-5 text-sm">Timer Title</b>
-        <Input onChange={handleInputChange} />
+        <Input placeholder="Enter Timer Title" onChange={handleTimerTitleChange} defaultValue={timerTitle} />
       </div>
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 text-sm">Set the time in</b>
         <div className="flex flex-row">
-          <Radio />
-          <Radio />
-          <Radio />
-          <Radio />
+          <Radio/> Days
+          <Radio /> Hours
+          <Radio /> Minutes
+          <Radio /> Seconds
         </div>
       </div>
       <div className="mb-4">
         <b className="block mb-4 text-sm">Remaining Time Period</b>
-        <Input />
+        <Input placeholder="Enter Remaining Time Period" onChange={handleRemainingTimePeriodChange} defaultValue={remainingTimePeriod} />
       </div>
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 text-sm">Positioning</b>

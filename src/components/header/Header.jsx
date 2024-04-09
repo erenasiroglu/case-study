@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Timer from "../timer/Timer";
 import "./styles.css";
 
-export const Header = ({ selectedTheme, isCloseButtonOn, inputValue }) => {
+export const Header = ({ selectedTheme, isCloseButtonOn, timerTitle }) => {
   const [isHidden, setIsHidden] = useState(false);
 
   const handleClick = () => {
@@ -17,29 +17,33 @@ export const Header = ({ selectedTheme, isCloseButtonOn, inputValue }) => {
   };
 
   let backgroundColor;
+  let textColor;
   switch (selectedTheme) {
     case "Light":
-      backgroundColor = "white";
+      backgroundColor = "bg-white";
+      textColor = "text-black";
       break;
     case "Dark":
-      backgroundColor = "black";
+      backgroundColor = "bg-black";
+      textColor = "text-white";
       break;
     case "Colorful":
-      backgroundColor = "gray-200";
+      backgroundColor = "bg-teal-700";
+      textColor = "text-black";
       break;
     default:
-      backgroundColor = "white";
+      backgroundColor = "bg-white";
   }
 
   return (
     !isHidden && (
       <div
-        className={`header w-full flex flex-row h-20 p-4 justify-around items-center bg-${backgroundColor}`}
+        className={`header w-full flex flex-row h-20 p-4 justify-around items-center ${backgroundColor}`}
       >
-        <h1 className={`header-text text-2xl font-bold`}>{inputValue}</h1> 
+        <h1 className={`header-text text-2xl font-bold ${textColor}`}>{timerTitle}</h1> 
         <Timer />
         <button
-          className="bg-[#248277] text-black px-4 py-2 rounded-md text-2xl font-bold"
+          className={`bg-[#248277] px-4 py-2 rounded-md text-2xl font-bold  ${textColor}`}
           onClick={handleRedirect}
         >
           Shop Now!

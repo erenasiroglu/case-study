@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Input = ({ label, placeholder, onChange }) => {
+const Input = ({ label, placeholder, onChange, defaultValue }) => {
   const handleChange = (event) => {
     onChange(event.target.value); 
   };
@@ -13,7 +13,7 @@ export const Input = ({ label, placeholder, onChange }) => {
         type="text"
         placeholder={placeholder}
         onChange={handleChange}
-        defaultValue="Black Friday Sale"
+        defaultValue={defaultValue}
       />
     </div>
   );

@@ -6,10 +6,10 @@ import "./App.css";
 export const App = () => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isCloseButtonOn, setIsCloseButtonOn] = useState(false);
-  const [inputValue, setInputValue] = useState("Black Friday Sale");
+  const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
 
   const handleInputValueChange = (value) => {
-    setInputValue(value);
+    setTimerTitle(value);
   };
 
   const handleThemeChange = (theme) => {
@@ -33,7 +33,7 @@ export const App = () => {
         <Counter
           selectedTheme={selectedTheme}
           isCloseButtonOn={isCloseButtonOn}
-          inputValue={inputValue}
+          timerTitle={timerTitle}
         />
       </div>
     </div>
