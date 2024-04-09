@@ -64,19 +64,19 @@ export const TimerSettings = ({ onThemeChange, onSwitchChange, onInputChange }) 
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 text-sm">Positioning</b>
         <div className="flex flex-row">
-          <Radio />
-          <Radio />
-          <Radio />
+          <Radio /> Top Sticky
+          <Radio /> Top Static
+          <Radio /> Bottom Static
         </div>
       </div>
       <h1 className="text-base font-bold mb-4">Counters and Labels</h1>
       <div className="mb-4 flex flex-col">
         <b className="mr-2 text-sm">Display the count in</b>
         <div className="flex flex-row">
-        <Checkbox />
-        <Checkbox />
-        <Checkbox />
-        <Checkbox />
+        <Checkbox /> Days
+        <Checkbox /> Hours
+        <Checkbox /> Minutes
+        <Checkbox /> Seconds
         </div>
       </div>
     </div>
