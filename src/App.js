@@ -1,17 +1,17 @@
-import Checkbox from "./checkbox/Chekbox";
-import Dropdown from "./dropdown/Dropdown";
-import PlaceHolder from "./placeholder/PlaceHolder";
-import RadioButton from "./radio-button/RadioButton";
-import Switch from "./switch/Switch";
+import React from "react";
+import Counter from "./layouts/Counter";
+import TimerSettings from "./layouts/TimerSettings";
+import "./App.css";
 
 export const App = () => {
   return (
-    <div>
-      <Dropdown />
-      <Checkbox />
-      <RadioButton />
-      <Switch />
-      <PlaceHolder />
+    <div className="flex flex-col lg:flex-row">
+      <div className="leftSide">
+        <TimerSettings />
+      </div>
+      <div className="rightSide">
+        <Counter />
+      </div>
     </div>
   );
 };

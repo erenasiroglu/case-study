@@ -25,7 +25,7 @@ export const Switch = () => {
             }`}
           ></div>
         </div>
-        <div className="ml-3 text-gray-700 font-medium">text</div>
+        <div className="ml-3 text-gray-700 font-medium">Turn on close button</div>
       </label>
     </div>
   );
