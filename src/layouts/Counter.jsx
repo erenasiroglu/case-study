@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from '../components/header/Header';
 
 export const Counter = () => {
   return (
-    <div className='bg-gray-200 p-8 w-full h-full'>
-      <div className="bg-white p-8 rounded-lg shadow-md w-full h-full">
+    <div className='bg-gray-200 p-8 w-full h-full bg-[#E5E6E4]'>
+      <div className="bg-[#FAF9F9] shadow-md w-full h-full">
+        <Header/>
       </div>
     </div>
   );
