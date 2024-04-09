@@ -46,28 +46,28 @@ const Timer = ({
 
   return (
     <div className="flex flex-row flex-wrap">
-      <div className="flex flex-col items-center text-2xl mr-3">
+      <div className="flex flex-col items-center text-2xl mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "days")}
         </div>
         <span className="text-xs">Days</span>
       </div>
       <div className="mt-2"></div> 
-      <div className="flex flex-col items-center text-2xl  mr-3">
+      <div className="flex flex-col items-center text-2xl  mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "hours")}
         </div>
         <span className="text-xs">Hours</span>
       </div>
       <div className="mt-2"></div>
-      <div className="flex flex-col items-center text-2xl  mr-3">
+      <div className="flex flex-col items-center text-2xl  mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "minutes")}
         </div>
         <span className="text-xs">Minutes</span>
       </div>
       <div className="mt-2"></div>
-      <div className="flex flex-col items-center text-2xl  mr-3">
+      <div className="flex flex-col items-center text-2xl  mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "seconds")}
         </div>

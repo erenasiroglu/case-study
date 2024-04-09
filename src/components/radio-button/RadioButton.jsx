@@ -10,9 +10,9 @@ export const RadioButton = ({ id, name, value, checked, onChange, label }) => {
         value={value}
         checked={checked}
         onChange={onChange}
-        className="form-radio h-5 w-5 text-indigo-600 transition duration-150 ease-in-out"
+        className="form-radio h-4 w-4 bg-black transition duration-150 ease-in-out"
       />
-      <label htmlFor={id} className="ml-2">{label}</label>
+      <label htmlFor={id} className="ml-1 text-sm text-gray-700">{label}</label>
     </div>
   );
 };

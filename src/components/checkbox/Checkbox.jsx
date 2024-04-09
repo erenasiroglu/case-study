@@ -7,9 +7,9 @@ export const Checkbox = ({ label, checked, onChange }) => {
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="form-checkbox h-5 w-5 text-blue-600"
+        className="form-checkbox h-4 w-4 text-blue-600"
       />
-      <label className="ml-2 text-gray-700">{label}</label>
+      <label className="ml-2 text-sm text-gray-700">{label}</label>
     </div>
   );
 };
