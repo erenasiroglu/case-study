@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Timer from "../timer/Timer";
+import "./styles.css";
 
-export const Header = ({ selectedTheme, isCloseButtonOn }) => {
+export const Header = ({ selectedTheme, isCloseButtonOn, inputValue }) => {
   const [isHidden, setIsHidden] = useState(false);
 
   const handleClick = () => {
@@ -12,8 +13,8 @@ export const Header = ({ selectedTheme, isCloseButtonOn }) => {
   };
 
   const handleRedirect = () => {
-    window.open('https://www.beforesunset.ai/', '_blank');
-  }  
+    window.open("https://www.beforesunset.ai/", "_blank");
+  };
 
   let backgroundColor;
   switch (selectedTheme) {
@@ -32,10 +33,15 @@ export const Header = ({ selectedTheme, isCloseButtonOn }) => {
 
   return (
     !isHidden && (
-      <div className={`w-full flex flex-row h-20 p-4 justify-around items-center bg-${backgroundColor}`}>
-        <h1 className="text-2xl font-bold">Black Friday Sale</h1>
+      <div
+        className={`header w-full flex flex-row h-20 p-4 justify-around items-center bg-${backgroundColor}`}
+      >
+        <h1 className={`header-text text-2xl font-bold`}>{inputValue}</h1> 
         <Timer />
-        <button className="bg-[#248277] text-black px-4 py-2 rounded-md text-2xl font-bold" onClick={handleRedirect} >
+        <button
+          className="bg-[#248277] text-black px-4 py-2 rounded-md text-2xl font-bold"
+          onClick={handleRedirect}
+        >
           Shop Now!
         </button>
         {isCloseButtonOn && (

@@ -5,9 +5,10 @@ import Radio from "../components/radio-button/RadioButton";
 import Input from "../components/input/Input";
 import Checkbox from "../components/checkbox/Checkbox";
 
-export const TimerSettings = ({ onThemeChange, onSwitchChange }) => {
+export const TimerSettings = ({ onThemeChange, onSwitchChange, onInputChange }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
@@ -19,9 +20,15 @@ export const TimerSettings = ({ onThemeChange, onSwitchChange }) => {
     onSwitchChange(isChecked);
   };
 
+  const handleInputChange = (value) => {
+    setInputValue(value);
+    onInputChange(value);
+  };
+
   console.log(selectedTheme);
   console.log(isSwitchOn);
-  
+  console.log(inputValue);
+
   return (
     <div className="timer-settings p-8">
       <h1 className="text-base font-bold mb-4">Timer Settings</h1>
@@ -35,7 +42,7 @@ export const TimerSettings = ({ onThemeChange, onSwitchChange }) => {
       <Switch onSwitchChange={handleSwitchChange} />
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 mt-5 text-sm">Timer Title</b>
-        <Input />
+        <Input onChange={handleInputChange} />
       </div>
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 text-sm">Set the time in</b>
