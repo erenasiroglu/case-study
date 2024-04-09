@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-export const Dropdown = () => {
+export const Dropdown = ({ onThemeChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("Light");
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
+    onThemeChange(option);
   };
 
   return (
@@ -17,9 +18,9 @@ export const Dropdown = () => {
           className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
           onClick={() => setIsOpen(!isOpen)}
           aria-haspopup="true"
-          aria-expanded={isOpen ? 'true' : 'false'}
+          aria-expanded={isOpen ? "true" : "false"}
         >
-          {selectedOption ? selectedOption : 'Dropdown'}
+          {selectedOption}{" "}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +49,6 @@ export const Dropdown = () => {
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
               onClick={() => handleOptionClick('Light')}
               role="menuitem"
-              style={{backgroundColor: 'white', color: 'gray'}}
-              
             >
               Light
             </button>
@@ -57,7 +56,6 @@ export const Dropdown = () => {
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
               onClick={() => handleOptionClick('Dark')}
               role="menuitem"
-              style={{backgroundColor: 'white', color: 'gray'}}
             >
               Dark
             </button>
@@ -65,7 +63,6 @@ export const Dropdown = () => {
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
               onClick={() => handleOptionClick('Colorful')}
               role="menuitem"
-              style={{backgroundColor: 'white', color: 'gray'}}
             >
               Colorful
             </button>

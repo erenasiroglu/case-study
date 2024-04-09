@@ -1,12 +1,35 @@
+// Header.jsx
+
 import React from "react";
 import Timer from "../timer/Timer";
 
-export const Header = () => {
+export const Header = ({ selectedTheme }) => {
+
+  console.log(selectedTheme);
+  const handleClick = () => {
+    window.location.href = "https://www.beforesunset.ai/";
+  };
+
+  let backgroundColor;
+  switch (selectedTheme) {
+    case "Light":
+      backgroundColor = "white";
+      break;
+    case "Dark":
+      backgroundColor = "black";
+      break;
+    case "Colorful":
+      backgroundColor = "gray-200";
+      break;
+    default:
+      backgroundColor = "white";
+  }
+
   return (
-    <div className="w-full flex flex-row h-20 p-4 bg-[#FFFF] justify-around items-center">
+    <div className={`w-full flex flex-row h-20 p-4 justify-around items-center bg-${backgroundColor}`}>
       <h1 className="text-2xl font-bold">Black Friday Sale</h1>
       <Timer />
-      <button className="bg-[#248277] text-black px-4 py-2 rounded-md text-2xl font-bold">
+      <button className="bg-[#248277] text-black px-4 py-2 rounded-md text-2xl font-bold" onClick={handleClick}>
         Shop Now!
       </button>
       <button
