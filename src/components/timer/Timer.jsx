@@ -1,12 +1,33 @@
 import React, { useState, useEffect } from "react";
 
-const Timer = ({
-  initialRemainingTime = 5 * 24 * 60 * 60,
+export const Timer = ({
   selectedTheme,
+  selectedTimePeriod,
+  remainingTimePeriod
 }) => {
-  const [remainingTime, setRemainingTime] = useState(initialRemainingTime);
+  const [remainingTime, setRemainingTime] = useState(0);
 
   useEffect(() => {
+    let totalTimeInSeconds = 0;
+    switch (selectedTimePeriod) {
+      case "days":
+        totalTimeInSeconds = remainingTimePeriod * 24 * 60 * 60;
+        break;
+      case "hours":
+        totalTimeInSeconds = remainingTimePeriod * 60 * 60;
+        break;
+      case "minutes":
+        totalTimeInSeconds = remainingTimePeriod * 60;
+        break;
+      case "seconds":
+        totalTimeInSeconds = remainingTimePeriod;
+        break;
+      default:
+        totalTimeInSeconds = 0;
+    }
+
+    setRemainingTime(totalTimeInSeconds);
+
     const interval = setInterval(() => {
       setRemainingTime((prevTime) => {
         if (prevTime <= 0) {
@@ -18,7 +39,7 @@ const Timer = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [selectedTimePeriod, remainingTimePeriod]);
 
   const formatTime = (time, unit) => {
     switch (unit) {
@@ -36,25 +57,30 @@ const Timer = ({
   };
 
   let textColor;
+  let buttonColor;
   switch (selectedTheme) {
     case "Light":
       textColor = "text-black";
+      buttonColor = "bg-teal-700"
       break;
     case "Dark":
       textColor = "text-white";
+      buttonColor = "bg-[#9FCFCA]";
       break;
     case "Colorful":
       textColor = "text-black";
+      buttonColor = "bg-[#9FCFCA]";
       break;
     default:
       textColor = "bg-white";
+      buttonColor = "bg-teal-700"
   }
 
   const renderDigitGroups = (time, unit) => {
     const digits = formatTime(time, unit).toString().padStart(2, "0");
 
     return digits.split("").map((digit, index) => (
-      <div key={index} className={`bg-[#248277] rounded p-2 ${textColor} font-bold mr-1`}>
+      <div key={index} className={`${buttonColor} rounded p-2 ${textColor} font-bold mr-1`}>
         {digit}
       </div>
     ));

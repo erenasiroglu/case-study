@@ -1,7 +1,14 @@
 import React from 'react';
 import Header from '../components/header/Header';
 
-export const Counter = ({ selectedTheme, isCloseButtonOn, timerTitle, selectedPosition }) => {
+export const Counter = ({
+  selectedTheme,
+  isCloseButtonOn,
+  timerTitle,
+  selectedPosition,
+  selectedTimePeriod,
+  remainingTimePeriod,
+}) => {
   let positionClass;
   switch (selectedPosition) {
     case "top Sticky":
@@ -18,9 +25,20 @@ export const Counter = ({ selectedTheme, isCloseButtonOn, timerTitle, selectedPo
   }
 
   return (
-    <div className={`bg-gray-200 p-8 w-full h-full bg-[#E5E6E4] ${positionClass}`}>
-      <div className={`bg-[#FAF9F9] shadow-md h-full absolute ${positionClass}`}>
-        <Header selectedTheme={selectedTheme} isCloseButtonOn={isCloseButtonOn} timerTitle={timerTitle} selectedPosition={selectedPosition} />
+    <div
+      className={`bg-gray-200 p-8 w-full h-full bg-[#E5E6E4] ${positionClass}`}
+    >
+      <div
+        className={`bg-[#FAF9F9] shadow-md h-full absolute ${positionClass}`}
+      >
+        <Header
+          selectedTheme={selectedTheme}
+          isCloseButtonOn={isCloseButtonOn}
+          timerTitle={timerTitle}
+          selectedPosition={selectedPosition}
+          remainingTimePeriod={remainingTimePeriod}
+          selectedTimePeriod={selectedTimePeriod}
+        />
       </div>
     </div>
   );

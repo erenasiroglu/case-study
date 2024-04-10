@@ -10,12 +10,15 @@ export const TimerSettings = ({
   onSwitchChange,
   onInputChange,
   onPositionChange,
+  onRemainingTimePeriodChange,
+  onSelectedTimePeriodChange,
 }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
   const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
   const [selectedPosition, setSelectedPosition] = useState("");
+  const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
 
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
@@ -32,19 +35,27 @@ export const TimerSettings = ({
     onInputChange(value);
   };
 
-  const handleRemainingTimePeriodChange = (value) => {
-    setRemainingTimePeriod(value);
-  };
-
   const handlePositionChange = (event) => {
     const position = event.target.value;
     setSelectedPosition(position);
     onPositionChange(position);
   };
 
+  const handleRemainingTimePeriodChange = (value) => {
+    setRemainingTimePeriod(value);
+    onRemainingTimePeriodChange(value);
+  };
+
+  const handleTimePeriodChange = (value) => {
+    setSelectedTimePeriod(value);
+    onSelectedTimePeriodChange(value);
+  };
+
   console.log(selectedTheme);
   console.log(isSwitchOn);
   console.log(selectedPosition);
+  console.log(selectedTimePeriod);
+  console.log(remainingTimePeriod);
 
   return (
     <div className="timer-settings p-8">
@@ -68,10 +79,30 @@ export const TimerSettings = ({
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 text-base">Set the time in</b>
         <div className="flex flex-row gap-2.5">
-          <Radio id="days" name="timePeriod" value="days" label="Days" />
-          <Radio id="hours" name="timePeriod" value="hours" label="Hours" />
-          <Radio name="timePeriod" label="Minutes" />
-          <Radio name="timePeriod" label="Seconds" />
+          <Radio
+            id="days"
+            name="timePeriod"
+            value="days"
+            label="Days"
+            onChange={() => handleTimePeriodChange("days")}
+          />
+          <Radio
+            id="hours"
+            name="timePeriod"
+            value="hours"
+            label="Hours"
+            onChange={() => handleTimePeriodChange("hours")}
+          />
+          <Radio
+            name="timePeriod"
+            label="Minutes"
+            onChange={() => handleTimePeriodChange("minutes")}
+          />
+          <Radio
+            name="timePeriod"
+            label="Seconds"
+            onChange={() => handleTimePeriodChange("seconds")}
+          />
         </div>
       </div>
       <div className="mb-4">

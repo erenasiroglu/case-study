@@ -8,6 +8,8 @@ export const App = () => {
   const [isCloseButtonOn, setIsCloseButtonOn] = useState(false);
   const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
+  const [remainingTimePeriod, setRemainingTimePeriod] = useState(23);
 
   const handleInputValueChange = (value) => {
     setTimerTitle(value);
@@ -25,7 +27,17 @@ export const App = () => {
     setSelectedPosition(position);
   };
 
+  const handleTimePeriodChange = (timePeriod) => {
+    setSelectedTimePeriod(timePeriod);
+  };
+
+  const handleRemainingTimePeriodChange = (value) => {
+    setRemainingTimePeriod(value);
+  };
+
   console.log(selectedPosition);
+  console.log(selectedTimePeriod);
+
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="leftSide">
@@ -34,6 +46,9 @@ export const App = () => {
           onSwitchChange={handleSwitchChange}
           onInputChange={handleInputValueChange}
           onPositionChange={handlePositionChange}
+          onTimePeriodChange={handleTimePeriodChange}
+          onRemainingTimePeriodChange={handleRemainingTimePeriodChange}
+          onSelectedTimePeriodChange={handleTimePeriodChange}
         />
       </div>
       <div className="rightSide">
@@ -42,6 +57,8 @@ export const App = () => {
           isCloseButtonOn={isCloseButtonOn}
           timerTitle={timerTitle}
           selectedPosition={selectedPosition}
+          selectedTimePeriod={selectedTimePeriod}
+          remainingTimePeriod={remainingTimePeriod} // Yeni prop
         />
       </div>
     </div>
