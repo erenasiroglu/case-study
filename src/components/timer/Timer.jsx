@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const Timer = ({
-  initialRemainingTime = 5 * 24 * 60 * 60
+  initialRemainingTime = 5 * 24 * 60 * 60,
+  selectedTheme,
 }) => {
   const [remainingTime, setRemainingTime] = useState(initialRemainingTime);
 
@@ -34,11 +35,26 @@ const Timer = ({
     }
   };
 
+  let textColor;
+  switch (selectedTheme) {
+    case "Light":
+      textColor = "text-black";
+      break;
+    case "Dark":
+      textColor = "text-white";
+      break;
+    case "Colorful":
+      textColor = "text-black";
+      break;
+    default:
+      textColor = "bg-white";
+  }
+
   const renderDigitGroups = (time, unit) => {
     const digits = formatTime(time, unit).toString().padStart(2, "0");
 
     return digits.split("").map((digit, index) => (
-      <div key={index} className="bg-[#248277] rounded p-2 text-black font-bold mr-1">
+      <div key={index} className={`bg-[#248277] rounded p-2 ${textColor} font-bold mr-1`}>
         {digit}
       </div>
     ));
@@ -50,28 +66,28 @@ const Timer = ({
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "days")}
         </div>
-        <span className="text-xs">Days</span>
+        <span className={`text-xs ${textColor}`}>Days</span>
       </div>
       <div className="mt-2"></div> 
       <div className="flex flex-col items-center text-2xl  mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "hours")}
         </div>
-        <span className="text-xs">Hours</span>
+        <span className={`text-xs ${textColor}`}>Hours</span>
       </div>
       <div className="mt-2"></div>
       <div className="flex flex-col items-center text-2xl  mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "minutes")}
         </div>
-        <span className="text-xs">Minutes</span>
+        <span className={`text-xs ${textColor}`}>Minutes</span>
       </div>
       <div className="mt-2"></div>
       <div className="flex flex-col items-center text-2xl  mr-4">
         <div className="flex flex-row">
           {renderDigitGroups(remainingTime, "seconds")}
         </div>
-        <span className="text-xs">Seconds</span>
+        <span className={`text-xs ${textColor}`}>Seconds</span>
       </div>
     </div>
   );

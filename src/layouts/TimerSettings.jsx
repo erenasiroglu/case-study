@@ -48,7 +48,7 @@ export const TimerSettings = ({
         <b className="mr-2 text-base">Close Button</b>
       </div>
       <Switch onSwitchChange={handleSwitchChange} />
-      <div className="mb-4 flex flex-col">
+      <div className="flex flex-col">
         <b className="mb-4 mt-5 text-base">Timer Title</b>
         <Input
           placeholder="Enter Timer Title"

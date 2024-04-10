@@ -18,6 +18,8 @@ export const Header = ({ selectedTheme, isCloseButtonOn, timerTitle }) => {
 
   let backgroundColor;
   let textColor;
+  let buttonColor;
+
   switch (selectedTheme) {
     case "Light":
       backgroundColor = "bg-white";
@@ -30,6 +32,7 @@ export const Header = ({ selectedTheme, isCloseButtonOn, timerTitle }) => {
     case "Colorful":
       backgroundColor = "bg-teal-700";
       textColor = "text-black";
+      buttonColor = "bg-[#9FCFCA]";
       break;
     default:
       backgroundColor = "bg-white";
@@ -41,9 +44,9 @@ export const Header = ({ selectedTheme, isCloseButtonOn, timerTitle }) => {
         className={`header w-full flex flex-row h-20 p-4 justify-around items-center ${backgroundColor}`}
       >
         <h1 className={`header-text text-2xl font-bold ${textColor}`}>{timerTitle}</h1> 
-        <Timer />
+        <Timer selectedTheme={selectedTheme}/>
         <button
-          className={`bg-[#248277] px-4 py-2 rounded-md text-2xl font-bold  ${textColor}`}
+          className={`bg-[#248277] px-4 py-2 rounded-md text-2xl font-bold ${buttonColor} ${textColor}`}
           onClick={handleRedirect}
         >
           Shop Now!
