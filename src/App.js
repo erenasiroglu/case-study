@@ -7,6 +7,7 @@ export const App = () => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isCloseButtonOn, setIsCloseButtonOn] = useState(false);
   const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
+  const [selectedPosition, setSelectedPosition] = useState(null);
 
   const handleInputValueChange = (value) => {
     setTimerTitle(value);
@@ -20,6 +21,11 @@ export const App = () => {
     setIsCloseButtonOn(isChecked);
   };
 
+  const handlePositionChange = (position) => {
+    setSelectedPosition(position);
+  };
+
+  console.log(selectedPosition);
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="leftSide">
@@ -27,6 +33,7 @@ export const App = () => {
           onThemeChange={handleThemeChange}
           onSwitchChange={handleSwitchChange}
           onInputChange={handleInputValueChange}
+          onPositionChange={handlePositionChange}
         />
       </div>
       <div className="rightSide">
@@ -34,6 +41,7 @@ export const App = () => {
           selectedTheme={selectedTheme}
           isCloseButtonOn={isCloseButtonOn}
           timerTitle={timerTitle}
+          selectedPosition={selectedPosition}
         />
       </div>
     </div>

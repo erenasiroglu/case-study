@@ -9,11 +9,13 @@ export const TimerSettings = ({
   onThemeChange,
   onSwitchChange,
   onInputChange,
+  onPositionChange,
 }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
   const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
+  const [selectedPosition, setSelectedPosition] = useState("");
 
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
@@ -34,8 +36,15 @@ export const TimerSettings = ({
     setRemainingTimePeriod(value);
   };
 
+  const handlePositionChange = (event) => {
+    const position = event.target.value;
+    setSelectedPosition(position);
+    onPositionChange(position);
+  };
+
   console.log(selectedTheme);
   console.log(isSwitchOn);
+  console.log(selectedPosition);
 
   return (
     <div className="timer-settings p-8">
@@ -61,24 +70,13 @@ export const TimerSettings = ({
         <div className="flex flex-row gap-2.5">
           <Radio id="days" name="timePeriod" value="days" label="Days" />
           <Radio id="hours" name="timePeriod" value="hours" label="Hours" />
-          <Radio
-            id="minutes"
-            name="timePeriod"
-            value="minutes"
-            label="Minutes"
-          />
-          <Radio
-            id="seconds"
-            name="timePeriod"
-            value="seconds"
-            label="Seconds"
-          />
+          <Radio name="timePeriod" label="Minutes" />
+          <Radio name="timePeriod" label="Seconds" />
         </div>
       </div>
       <div className="mb-4">
         <b className="block mb-4 text-base">Remaining Time Period</b>
         <Input
-          placeholder="Enter Remaining Time Period"
           onChange={handleRemainingTimePeriodChange}
           defaultValue={remainingTimePeriod}
         />
@@ -86,18 +84,33 @@ export const TimerSettings = ({
       <div className="mb-4 flex flex-col">
         <b className="block mb-4 text-base">Positioning</b>
         <div className="flex flex-row gap-2.5">
-          <Radio value="top Sticky" label="Top Sticky" />
-          <Radio value="top static" label="Top Static"/> 
-          <Radio value="bottom static" label="Bottom Static"/>
+          <Radio
+            name="position"
+            value="top Sticky"
+            label="Top Sticky"
+            onChange={(value) => handlePositionChange(value)}
+          />
+          <Radio
+            name="position"
+            value="top static"
+            label="Top Static"
+            onChange={(value) => handlePositionChange(value)}
+          />
+          <Radio
+            name="position"
+            value="bottom static"
+            label="Bottom Static"
+            onChange={(value) => handlePositionChange(value)}
+          />
         </div>
       </div>
       <h1 className="text-2xl font-semibold mb-4">Counters and Labels</h1>
       <div className="mb-4 flex flex-col">
         <b className="mr-2 mb-4 text-base">Display the count in</b>
         <div className="flex flex-row gap-2.5">
-          <Checkbox label="Days"/>
-          <Checkbox label="Hours"/>
-          <Checkbox label="Minutes"/>
+          <Checkbox label="Days" />
+          <Checkbox label="Hours" />
+          <Checkbox label="Minutes" />
           <Checkbox label="Seconds" />
         </div>
       </div>
