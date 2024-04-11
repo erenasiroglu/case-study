@@ -12,7 +12,10 @@ export const Counter = ({
   showHours,
   showMinutes,
   showSeconds,
+  buttonTitle,
+  buttonLink,
 }) => {
+
   // let positionClass;
   // switch (selectedPosition) {
   //   case "top Sticky":
@@ -42,6 +45,8 @@ export const Counter = ({
           showHours={showHours}
           showMinutes={showMinutes}
           showSeconds={showSeconds}
+          buttonTitle={buttonTitle}
+          buttonLink={buttonLink}
         />
       </div>
     </div>

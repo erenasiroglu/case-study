@@ -12,6 +12,8 @@ export const Header = ({
   showHours,
   showMinutes,
   showSeconds,
+  buttonTitle,
+  buttonLink,
 }) => {
   const [isHidden, setIsHidden] = useState(false);
 
@@ -23,9 +25,13 @@ export const Header = ({
   };
 
   const handleRedirect = () => {
-    window.open("https://www.beforesunset.ai/", "_blank");
+    if (buttonLink.startsWith("http://") || buttonLink.startsWith("https://")) {
+      window.open(buttonLink, "_blank");
+    } else {
+      window.open("http://" + buttonLink, "_blank");
+    }
   };
-
+  
   let backgroundColor;
   let textColor;
 
@@ -67,7 +73,7 @@ export const Header = ({
           className={`bg-[#248277] px-4 py-2 rounded-md text-2xl font-bold ${textColor}`}
           onClick={handleRedirect}
         >
-          Shop Now!
+          {buttonTitle}
         </button>
         {isCloseButtonOn && (
           <button type="button" onClick={handleClick}>

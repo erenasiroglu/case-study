@@ -10,6 +10,8 @@ export const App = () => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
   const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
+  const [buttonTitle, setButtonTitle] = useState("Shop Now!");
+  const [buttonLink, setButtonLink] = useState("www.stripe.com");
 
   const [showDays, setShowDays] = useState(true);
   const [showHours, setShowHours] = useState(true);
@@ -64,6 +66,14 @@ export const App = () => {
     }
   };
 
+  const handleButtonTitleChange = (value) => {
+    setButtonTitle(value);
+  };
+
+  const handleButtonLinkChange = (value) => {
+    setButtonLink(value);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="leftSide">
@@ -76,6 +86,8 @@ export const App = () => {
           onRemainingTimePeriodChange={handleRemainingTimePeriodChange}
           onSelectedTimePeriodChange={handleTimePeriodChange}
           onCheckboxChange={handleCheckboxChange}
+          onButtonTitleChange={handleButtonTitleChange}
+          onButtonLinkChange={handleButtonLinkChange}
         />
       </div>
       <div className="rightSide">
@@ -90,6 +102,8 @@ export const App = () => {
           showHours={showHours}
           showMinutes={showMinutes}
           showSeconds={showSeconds}
+          buttonTitle={buttonTitle}
+          buttonLink={buttonLink}
         />
       </div>
     </div>

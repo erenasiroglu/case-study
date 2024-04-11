@@ -13,6 +13,8 @@ export const TimerSettings = ({
   onRemainingTimePeriodChange,
   onSelectedTimePeriodChange,
   onCheckboxChange,
+  onButtonTitleChange,
+  onButtonLinkChange,
 }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
@@ -20,6 +22,8 @@ export const TimerSettings = ({
   const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
   const [selectedPosition, setSelectedPosition] = useState("");
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
+  const [buttonTitle, setButtonTitle] = useState("Shop Now!");
+  const [buttonLink, setButtonLink] = useState("www.stripe.com");
 
   const [showDays, setShowDays] = useState(true);
   const [showHours, setShowHours] = useState(true);
@@ -85,6 +89,16 @@ export const TimerSettings = ({
         break;
     }
   };
+
+  const handleButtonTitleChange = (value) => {
+    setButtonTitle(value);
+    onButtonTitleChange(value);
+  };
+
+  const handleButtonLinkChange = (value) => {
+    setButtonLink(value);
+    onButtonLinkChange(value);
+  }
 
   return (
     <div className="timer-settings p-8">
@@ -208,9 +222,9 @@ export const TimerSettings = ({
         <div>
           <h1 className="text-2xl font-semibold mb-4">Button Settings</h1>
           <div className="mr-2 mb-4 text-base font-semibold">Button Text</div>
-          <Input placeholder="Shop Now!" />
+          <Input placeholder="Shop Now!" onChange={handleButtonTitleChange} defaultValue={buttonTitle} />
           <div className="mr-2 mb-4 text-base font-semibold">Button Link </div>
-          <Input placeholder="www.stripe.com" />
+          <Input placeholder="www.stripe.com" onChange={handleButtonLinkChange} defaultValue={buttonLink} />
         </div>
       </div>
     </div>
