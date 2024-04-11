@@ -65,11 +65,11 @@ export const TimerSettings = ({
         <Dropdown onThemeChange={handleThemeChange} />
       </div>
       <div className="mb-4 flex flex-row items-center">
-        <b className="mr-2 text-base">Close Button</b>
+        <div className="font-semibold mr-2 text-base">Close Button</div>
       </div>
       <Switch onSwitchChange={handleSwitchChange} />
       <div className="flex flex-col">
-        <b className="mb-4 mt-5 text-base">Timer Title</b>
+        <div className="mb-4 mt-5 text-base font-semibold">Timer Title</div>
         <Input
           placeholder="Enter Timer Title"
           onChange={handleTimerTitleChange}
@@ -77,7 +77,7 @@ export const TimerSettings = ({
         />
       </div>
       <div className="mb-4 flex flex-col">
-        <b className="block mb-4 text-base">Set the time in</b>
+        <div className="block mb-4 text-base font-semibold">Set the time in</div>
         <div className="flex flex-row gap-2.5">
           <Radio
             id="days"
@@ -106,14 +106,14 @@ export const TimerSettings = ({
         </div>
       </div>
       <div className="mb-4">
-        <b className="block mb-4 text-base">Remaining Time Period</b>
+        <div className="block mb-4 text-base font-semibold">Remaining Time Period</div>
         <Input
           onChange={handleRemainingTimePeriodChange}
           defaultValue={remainingTimePeriod}
         />
       </div>
       <div className="mb-4 flex flex-col">
-        <b className="block mb-4 text-base">Positioning</b>
+        <div className="block mb-4 text-base font-semibold">Positioning</div>
         <div className="flex flex-row gap-2.5">
           <Radio
             name="position"
@@ -137,12 +137,29 @@ export const TimerSettings = ({
       </div>
       <h1 className="text-2xl font-semibold mb-4">Counters and Labels</h1>
       <div className="mb-4 flex flex-col">
-        <b className="mr-2 mb-4 text-base">Display the count in</b>
-        <div className="flex flex-row gap-2.5">
-          <Checkbox label="Days" />
+        <div className="mr-2 mb-4 text-base font-semibold">Display the count in</div>
+        <div className="flex flex-row gap-2.5 mb-4">
+        <Checkbox label="Days" />
           <Checkbox label="Hours" />
           <Checkbox label="Minutes" />
           <Checkbox label="Seconds" />
+        </div>
+        <div className="period-labels">
+          <div className="mr-2 mb-4 text-base font-semibold">Days Label</div>
+          <Input placeholder="Days" />
+          <div className="mr-2 mb-4 text-base font-semibold">Hours Label</div>
+          <Input placeholder="Hours"/>
+          <div className="mr-2 mb-4 text-base font-semibold">Minutes Label</div>
+          <Input placeholder="Minutes"/>
+          <div className="mr-2 mb-4 text-base font-semibold">Seconds Label</div>
+          <Input placeholder="Seconds"/>
+        </div>
+        <div>
+          <h1 className="text-2xl font-semibold mb-4">Button Settings</h1>
+          <div className="mr-2 mb-4 text-base font-semibold">Button Text</div>
+          <Input placeholder="Shop Now!" />
+          <div className="mr-2 mb-4 text-base font-semibold">Button Link </div>
+          <Input placeholder="www.stripe.com"/>
         </div>
       </div>
     </div>
