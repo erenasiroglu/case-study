@@ -15,6 +15,10 @@ export const TimerSettings = ({
   onCheckboxChange,
   onButtonTitleChange,
   onButtonLinkChange,
+  onDaysTextChange,
+  onHoursTextChange,
+  onMinutesTextChange,
+  onSecondsTextChange,
 }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
@@ -24,6 +28,10 @@ export const TimerSettings = ({
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
   const [buttonTitle, setButtonTitle] = useState("Shop Now!");
   const [buttonLink, setButtonLink] = useState("www.stripe.com");
+  const [daysText, setDaysText] = useState("Days");
+  const [hoursText, setHoursText] = useState("Hours");
+  const [minutesText, setMinutesText] = useState("Minutes");
+  const [secondsText, setSecondsText] = useState("Seconds");
 
   const [showDays, setShowDays] = useState(true);
   const [showHours, setShowHours] = useState(true);
@@ -67,6 +75,7 @@ export const TimerSettings = ({
     onSelectedTimePeriodChange(value);
   };
 
+
   const handleCheckboxChange = (name) => {
     switch (name) {
       case "days":
@@ -98,6 +107,26 @@ export const TimerSettings = ({
   const handleButtonLinkChange = (value) => {
     setButtonLink(value);
     onButtonLinkChange(value);
+  }
+
+  const handleDaysTextChange = (value) => {
+    setDaysText(value);
+    onDaysTextChange(value);
+  }
+
+  const handleHoursTextChange = (value) => {
+    setHoursText(value);
+    onHoursTextChange(value);
+  }
+
+  const handleMinutesTextChange = (value) => {
+    setMinutesText(value);
+    onMinutesTextChange(value);
+  }
+
+  const handleSecondsTextChange = (value) => {
+    setSecondsText(value);
+    onSecondsTextChange(value);
   }
 
   return (
@@ -211,13 +240,13 @@ export const TimerSettings = ({
         </div>
         <div className="period-labels">
           <div className="mr-2 mb-4 text-base font-semibold">Days Label</div>
-          <Input placeholder="Days" />
+          <Input placeholder="Days" onChange={handleDaysTextChange} defaultValue={daysText} />
           <div className="mr-2 mb-4 text-base font-semibold">Hours Label</div>
-          <Input placeholder="Hours" />
+          <Input placeholder="Hours" onChange={handleHoursTextChange} defaultValue={hoursText} />
           <div className="mr-2 mb-4 text-base font-semibold">Minutes Label</div>
-          <Input placeholder="Minutes" />
+          <Input placeholder="Minutes" onChange={handleMinutesTextChange} defaultValue={minutesText} />
           <div className="mr-2 mb-4 text-base font-semibold">Seconds Label</div>
-          <Input placeholder="Seconds" />
+          <Input placeholder="Seconds" onChange={handleSecondsTextChange} defaultValue={secondsText} />
         </div>
         <div>
           <h1 className="text-2xl font-semibold mb-4">Button Settings</h1>

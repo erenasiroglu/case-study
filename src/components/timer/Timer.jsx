@@ -8,6 +8,10 @@ export const Timer = ({
   showHours,
   showMinutes,
   showSeconds,
+  daysText,
+  hoursText,
+  minutesText,
+  secondsText,
 }) => {
   const [remainingTime, setRemainingTime] = useState(0);
 
@@ -100,7 +104,7 @@ export const Timer = ({
           <div className="flex flex-row">
             {renderDigitGroups(remainingTime, "days")}
           </div>
-          <span className={`text-xs ${textColor}`}>Days</span>
+          <span className={`text-xs ${textColor}`}>{daysText}</span>
         </div>
       )}
       {showHours && (
@@ -108,7 +112,7 @@ export const Timer = ({
           <div className="flex flex-row">
             {renderDigitGroups(remainingTime, "hours")}
           </div>
-          <span className={`text-xs ${textColor}`}>Hours</span>
+          <span className={`text-xs ${textColor}`}>{hoursText}</span>
         </div>
       )}
       {showMinutes && (
@@ -116,7 +120,7 @@ export const Timer = ({
           <div className="flex flex-row">
             {renderDigitGroups(remainingTime, "minutes")}
           </div>
-          <span className={`text-xs ${textColor}`}>Minutes</span>
+          <span className={`text-xs ${textColor}`}>{minutesText}</span>
         </div>
       )}
       {showSeconds && (
@@ -124,7 +128,7 @@ export const Timer = ({
           <div className="flex flex-row">
             {renderDigitGroups(remainingTime, "seconds")}
           </div>
-          <span className={`text-xs ${textColor}`}>Seconds</span>
+          <span className={`text-xs ${textColor}`}>{secondsText}</span>
         </div>
       )}
     </div>

@@ -12,6 +12,10 @@ export const App = () => {
   const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
   const [buttonTitle, setButtonTitle] = useState("Shop Now!");
   const [buttonLink, setButtonLink] = useState("www.stripe.com");
+  const [daysText, setDaysText] = useState("Days");
+  const [hoursText, setHoursText] = useState("Hours");
+  const [minutesText, setMinutesText] = useState("Minutes");
+  const [secondsText, setSecondsText] = useState("Seconds");
 
   const [showDays, setShowDays] = useState(true);
   const [showHours, setShowHours] = useState(true);
@@ -74,6 +78,22 @@ export const App = () => {
     setButtonLink(value);
   };
 
+  const handleDaysTextChange = (value) => {
+    setDaysText(value);
+  };
+
+  const handleHoursTextChange = (value) => {
+    setHoursText(value);
+  };
+
+  const handleMinutesTextChange = (value) => {
+    setMinutesText(value);
+  };
+
+  const handleSecondsTextChange = (value) => {
+    setSecondsText(value);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="leftSide">
@@ -88,6 +108,10 @@ export const App = () => {
           onCheckboxChange={handleCheckboxChange}
           onButtonTitleChange={handleButtonTitleChange}
           onButtonLinkChange={handleButtonLinkChange}
+          onDaysTextChange={handleDaysTextChange}
+          onHoursTextChange={handleHoursTextChange}
+          onMinutesTextChange={handleMinutesTextChange}
+          onSecondsTextChange={handleSecondsTextChange}
         />
       </div>
       <div className="rightSide">
@@ -104,6 +128,10 @@ export const App = () => {
           showSeconds={showSeconds}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
+          daysText={daysText}
+          hoursText={hoursText}
+          minutesText={minutesText}
+          secondsText={secondsText}
         />
       </div>
     </div>

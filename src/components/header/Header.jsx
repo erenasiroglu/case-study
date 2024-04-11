@@ -14,6 +14,10 @@ export const Header = ({
   showSeconds,
   buttonTitle,
   buttonLink,
+  daysText,
+  hoursText,
+  minutesText,
+  secondsText,
 }) => {
   const [isHidden, setIsHidden] = useState(false);
 
@@ -68,6 +72,10 @@ export const Header = ({
           showHours={showHours}
           showMinutes={showMinutes}
           showSeconds={showSeconds}
+          daysText={daysText}
+          hoursText={hoursText}
+          minutesText={minutesText}
+          secondsText={secondsText}
         />
         <button
           className={`bg-[#248277] px-4 py-2 rounded-md text-2xl font-bold ${textColor}`}

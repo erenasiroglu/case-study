@@ -14,6 +14,10 @@ export const Counter = ({
   showSeconds,
   buttonTitle,
   buttonLink,
+  daysText,
+  hoursText,
+  minutesText,
+  secondsText,
 }) => {
 
   // let positionClass;
@@ -47,6 +51,10 @@ export const Counter = ({
           showSeconds={showSeconds}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
+          daysText={daysText}
+          hoursText={hoursText}
+          minutesText={minutesText}
+          secondsText={secondsText}
         />
       </div>
     </div>
