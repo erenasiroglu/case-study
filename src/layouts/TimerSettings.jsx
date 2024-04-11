@@ -12,6 +12,7 @@ export const TimerSettings = ({
   onPositionChange,
   onRemainingTimePeriodChange,
   onSelectedTimePeriodChange,
+  onCheckboxChange,
 }) => {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
@@ -20,14 +21,21 @@ export const TimerSettings = ({
   const [selectedPosition, setSelectedPosition] = useState("");
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
 
+  const [showDays, setShowDays] = useState(true);
+  const [showHours, setShowHours] = useState(true);
+  const [showMinutes, setShowMinutes] = useState(true);
+  const [showSeconds, setShowSeconds] = useState(true);
+
   const handleThemeChange = (theme) => {
     setSelectedTheme(theme);
     onThemeChange(theme);
+    selectedTheme ? setSelectedTheme("") : setSelectedTheme(theme);
   };
 
   const handleSwitchChange = (isChecked) => {
     setIsSwitchOn(isChecked);
     onSwitchChange(isChecked);
+    isSwitchOn ? setIsSwitchOn(false) : setIsSwitchOn(true);
   };
 
   const handleTimerTitleChange = (value) => {
@@ -39,11 +47,15 @@ export const TimerSettings = ({
     const position = event.target.value;
     setSelectedPosition(position);
     onPositionChange(position);
+    selectedPosition ? setSelectedPosition("") : setSelectedPosition(position);
   };
 
   const handleRemainingTimePeriodChange = (value) => {
     setRemainingTimePeriod(value);
     onRemainingTimePeriodChange(value);
+    selectedTimePeriod
+      ? setSelectedTimePeriod("")
+      : setSelectedTimePeriod(value);
   };
 
   const handleTimePeriodChange = (value) => {
@@ -51,11 +63,28 @@ export const TimerSettings = ({
     onSelectedTimePeriodChange(value);
   };
 
-  console.log(selectedTheme);
-  console.log(isSwitchOn);
-  console.log(selectedPosition);
-  console.log(selectedTimePeriod);
-  console.log(remainingTimePeriod);
+  const handleCheckboxChange = (name) => {
+    switch (name) {
+      case "days":
+        setShowDays((prevValue) => !prevValue);
+        onCheckboxChange(name, !showDays);
+        break;
+      case "hours":
+        setShowHours((prevValue) => !prevValue);
+        onCheckboxChange(name, !showHours);
+        break;
+      case "minutes":
+        setShowMinutes((prevValue) => !prevValue);
+        onCheckboxChange(name, !showMinutes);
+        break;
+      case "seconds":
+        setShowSeconds((prevValue) => !prevValue);
+        onCheckboxChange(name, !showSeconds);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="timer-settings p-8">
@@ -77,7 +106,9 @@ export const TimerSettings = ({
         />
       </div>
       <div className="mb-4 flex flex-col">
-        <div className="block mb-4 text-base font-semibold">Set the time in</div>
+        <div className="block mb-4 text-base font-semibold">
+          Set the time in
+        </div>
         <div className="flex flex-row gap-2.5">
           <Radio
             id="days"
@@ -106,7 +137,9 @@ export const TimerSettings = ({
         </div>
       </div>
       <div className="mb-4">
-        <div className="block mb-4 text-base font-semibold">Remaining Time Period</div>
+        <div className="block mb-4 text-base font-semibold">
+          Remaining Time Period
+        </div>
         <Input
           onChange={handleRemainingTimePeriodChange}
           defaultValue={remainingTimePeriod}
@@ -137,29 +170,47 @@ export const TimerSettings = ({
       </div>
       <h1 className="text-2xl font-semibold mb-4">Counters and Labels</h1>
       <div className="mb-4 flex flex-col">
-        <div className="mr-2 mb-4 text-base font-semibold">Display the count in</div>
+        <div className="mr-2 mb-4 text-base font-semibold">
+          Display the count in
+        </div>
         <div className="flex flex-row gap-2.5 mb-4">
-        <Checkbox label="Days" />
-          <Checkbox label="Hours" />
-          <Checkbox label="Minutes" />
-          <Checkbox label="Seconds" />
+          <Checkbox
+            label="Days"
+            checked={showDays}
+            onChange={(isChecked) => handleCheckboxChange("days", isChecked)}
+          />
+          <Checkbox
+            label="Hours"
+            checked={showHours}
+            onChange={(isChecked) => handleCheckboxChange("hours", isChecked)}
+          />
+          <Checkbox
+            label="Minutes"
+            checked={showMinutes}
+            onChange={(isChecked) => handleCheckboxChange("minutes", isChecked)}
+          />
+          <Checkbox
+            label="Seconds"
+            checked={showSeconds}
+            onChange={(isChecked) => handleCheckboxChange("seconds", isChecked)}
+          />
         </div>
         <div className="period-labels">
           <div className="mr-2 mb-4 text-base font-semibold">Days Label</div>
           <Input placeholder="Days" />
           <div className="mr-2 mb-4 text-base font-semibold">Hours Label</div>
-          <Input placeholder="Hours"/>
+          <Input placeholder="Hours" />
           <div className="mr-2 mb-4 text-base font-semibold">Minutes Label</div>
-          <Input placeholder="Minutes"/>
+          <Input placeholder="Minutes" />
           <div className="mr-2 mb-4 text-base font-semibold">Seconds Label</div>
-          <Input placeholder="Seconds"/>
+          <Input placeholder="Seconds" />
         </div>
         <div>
           <h1 className="text-2xl font-semibold mb-4">Button Settings</h1>
           <div className="mr-2 mb-4 text-base font-semibold">Button Text</div>
           <Input placeholder="Shop Now!" />
           <div className="mr-2 mb-4 text-base font-semibold">Button Link </div>
-          <Input placeholder="www.stripe.com"/>
+          <Input placeholder="www.stripe.com" />
         </div>
       </div>
     </div>

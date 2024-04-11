@@ -2,7 +2,17 @@ import React, { useState } from "react";
 import Timer from "../timer/Timer";
 import "./styles.css";
 
-export const Header = ({ selectedTheme, isCloseButtonOn, timerTitle, remainingTimePeriod, selectedTimePeriod }) => {
+export const Header = ({
+  selectedTheme,
+  isCloseButtonOn,
+  timerTitle,
+  remainingTimePeriod,
+  selectedTimePeriod,
+  showDays,
+  showHours,
+  showMinutes,
+  showSeconds,
+}) => {
   const [isHidden, setIsHidden] = useState(false);
 
   const handleClick = () => {
@@ -41,8 +51,18 @@ export const Header = ({ selectedTheme, isCloseButtonOn, timerTitle, remainingTi
       <div
         className={`header w-full flex flex-row h-20 p-4 justify-around items-center ${backgroundColor}`}
       >
-        <h1 className={`header-text text-2xl font-bold ${textColor}`}>{timerTitle}</h1> 
-        <Timer selectedTheme={selectedTheme} remainingTimePeriod={remainingTimePeriod} selectedTimePeriod={selectedTimePeriod}/>
+        <h1 className={`header-text text-2xl font-bold ${textColor}`}>
+          {timerTitle}
+        </h1>
+        <Timer
+          selectedTheme={selectedTheme}
+          remainingTimePeriod={remainingTimePeriod}
+          selectedTimePeriod={selectedTimePeriod}
+          showDays={showDays}
+          showHours={showHours}
+          showMinutes={showMinutes}
+          showSeconds={showSeconds}
+        />
         <button
           className={`bg-[#248277] px-4 py-2 rounded-md text-2xl font-bold ${textColor}`}
           onClick={handleRedirect}

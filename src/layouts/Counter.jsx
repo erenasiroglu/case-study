@@ -8,8 +8,11 @@ export const Counter = ({
   selectedPosition,
   selectedTimePeriod,
   remainingTimePeriod,
+  showDays,
+  showHours,
+  showMinutes,
+  showSeconds,
 }) => {
-
   // let positionClass;
   // switch (selectedPosition) {
   //   case "top Sticky":
@@ -35,6 +38,10 @@ export const Counter = ({
           selectedPosition={selectedPosition}
           remainingTimePeriod={remainingTimePeriod}
           selectedTimePeriod={selectedTimePeriod}
+          showDays={showDays}
+          showHours={showHours}
+          showMinutes={showMinutes}
+          showSeconds={showSeconds}
         />
       </div>
     </div>

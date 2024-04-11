@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 export const Timer = ({
   selectedTheme,
   selectedTimePeriod,
-  remainingTimePeriod
+  remainingTimePeriod,
+  showDays,
+  showHours,
+  showMinutes,
+  showSeconds,
 }) => {
   const [remainingTime, setRemainingTime] = useState(0);
 
@@ -61,7 +65,7 @@ export const Timer = ({
   switch (selectedTheme) {
     case "Light":
       textColor = "text-black";
-      buttonColor = "bg-teal-700"
+      buttonColor = "bg-teal-700";
       break;
     case "Dark":
       textColor = "text-white";
@@ -73,14 +77,17 @@ export const Timer = ({
       break;
     default:
       textColor = "bg-white";
-      buttonColor = "bg-teal-700"
+      buttonColor = "bg-teal-700";
   }
 
   const renderDigitGroups = (time, unit) => {
     const digits = formatTime(time, unit).toString().padStart(2, "0");
 
     return digits.split("").map((digit, index) => (
-      <div key={index} className={`${buttonColor} rounded p-2 ${textColor} font-bold mr-1`}>
+      <div
+        key={index}
+        className={`${buttonColor} rounded p-2 ${textColor} font-bold mr-1`}
+      >
         {digit}
       </div>
     ));
@@ -88,33 +95,38 @@ export const Timer = ({
 
   return (
     <div className="flex flex-row flex-wrap">
-      <div className="flex flex-col items-center text-2xl mr-4">
-        <div className="flex flex-row">
-          {renderDigitGroups(remainingTime, "days")}
+      {showDays && (
+        <div className="flex flex-col items-center text-2xl mr-4">
+          <div className="flex flex-row">
+            {renderDigitGroups(remainingTime, "days")}
+          </div>
+          <span className={`text-xs ${textColor}`}>Days</span>
         </div>
-        <span className={`text-xs ${textColor}`}>Days</span>
-      </div>
-      <div className="mt-2"></div> 
-      <div className="flex flex-col items-center text-2xl  mr-4">
-        <div className="flex flex-row">
-          {renderDigitGroups(remainingTime, "hours")}
+      )}
+      {showHours && (
+        <div className="flex flex-col items-center text-2xl mr-4">
+          <div className="flex flex-row">
+            {renderDigitGroups(remainingTime, "hours")}
+          </div>
+          <span className={`text-xs ${textColor}`}>Hours</span>
         </div>
-        <span className={`text-xs ${textColor}`}>Hours</span>
-      </div>
-      <div className="mt-2"></div>
-      <div className="flex flex-col items-center text-2xl  mr-4">
-        <div className="flex flex-row">
-          {renderDigitGroups(remainingTime, "minutes")}
+      )}
+      {showMinutes && (
+        <div className="flex flex-col items-center text-2xl mr-4">
+          <div className="flex flex-row">
+            {renderDigitGroups(remainingTime, "minutes")}
+          </div>
+          <span className={`text-xs ${textColor}`}>Minutes</span>
         </div>
-        <span className={`text-xs ${textColor}`}>Minutes</span>
-      </div>
-      <div className="mt-2"></div>
-      <div className="flex flex-col items-center text-2xl  mr-4">
-        <div className="flex flex-row">
-          {renderDigitGroups(remainingTime, "seconds")}
+      )}
+      {showSeconds && (
+        <div className="flex flex-col items-center text-2xl mr-4">
+          <div className="flex flex-row">
+            {renderDigitGroups(remainingTime, "seconds")}
+          </div>
+          <span className={`text-xs ${textColor}`}>Seconds</span>
         </div>
-        <span className={`text-xs ${textColor}`}>Seconds</span>
-      </div>
+      )}
     </div>
   );
 };
