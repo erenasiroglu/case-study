@@ -22,11 +22,6 @@ export const App = () => {
   const [showMinutes, setShowMinutes] = useState(true);
   const [showSeconds, setShowSeconds] = useState(true);
 
-  console.log("show hours", showHours);
-  console.log("show minutes", showMinutes);
-  console.log("show seconds", showSeconds);
-  console.log("show days", showDays);
-
   const handleInputValueChange = (value) => {
     setTimerTitle(value);
   };

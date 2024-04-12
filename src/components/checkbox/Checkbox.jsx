@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css'
 
 export const Checkbox = ({ label, checked, onChange }) => {
   return (

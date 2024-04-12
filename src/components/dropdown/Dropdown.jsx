@@ -15,7 +15,7 @@ export const Dropdown = ({ onThemeChange }) => {
       <div>
         <button
           type="button"
-          className="inline-flex justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 focus:outline-none"
+          className="inline-flex justify-between w-full rounded-md px-4 py-2 bg-[#FAF9F9] text-sm font-medium text-gray-700 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
           aria-haspopup="true"
           aria-expanded={isOpen ? "true" : "false"}
@@ -38,7 +38,7 @@ export const Dropdown = ({ onThemeChange }) => {
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute mt-2 w-40 rounded-md bg-[#FAF9F9]">
           <div
             className="py-1"
             role="menu"
@@ -46,8 +46,8 @@ export const Dropdown = ({ onThemeChange }) => {
             aria-labelledby="options-menu"
           >
             <button
-              className={`block px-4 py-2 text-sm w-full text-left ${
-                selectedOption === "Light" ? "text-indigo-600" : "text-gray-700"
+              className={`block px-4 py-2 text-sm w-full text-left text-[#0A0908] ${
+                selectedOption === "Light" ? " font-semibold" : ""
               }`}
               onClick={() => handleOptionClick("Light")}
               role="menuitem"
@@ -56,7 +56,7 @@ export const Dropdown = ({ onThemeChange }) => {
             </button>
             <button
               className={`block px-4 py-2 text-sm w-full text-left ${
-                selectedOption === "Dark" ? "text-indigo-600" : "text-gray-700"
+                selectedOption === "Dark" ? "font-semibold" : ""
               }`}
               onClick={() => handleOptionClick("Dark")}
               role="menuitem"
@@ -66,8 +66,8 @@ export const Dropdown = ({ onThemeChange }) => {
             <button
               className={`block px-4 py-2 text-sm w-full text-left ${
                 selectedOption === "Colorful"
-                  ? "text-indigo-600"
-                  : "text-gray-700"
+                  ? "font-semibold" 
+                  : ""
               }`}
               onClick={() => handleOptionClick("Colorful")}
               role="menuitem"

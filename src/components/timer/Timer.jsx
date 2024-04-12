@@ -73,7 +73,7 @@ export const Timer = ({
       break;
     case "Dark":
       textColor = "text-white";
-      buttonColor = "bg-[#9FCFCA]";
+      buttonColor = "bg-[#248277]";
       break;
     case "Colorful":
       textColor = "text-black";
@@ -90,7 +90,7 @@ export const Timer = ({
     return digits.split("").map((digit, index) => (
       <div
         key={index}
-        className={`${buttonColor} rounded p-2 ${textColor} font-bold mr-1`}
+        className={`rounded p-2 flex items-center justify-center font-bold mr-1 w-6 h-9 ${buttonColor} ${textColor}`}
       >
         {digit}
       </div>
