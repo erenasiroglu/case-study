@@ -6,6 +6,7 @@ export const Header = ({
   selectedTheme,
   isCloseButtonOn,
   timerTitle,
+  selectedPosition,
   remainingTimePeriod,
   selectedTimePeriod,
   showDays,
@@ -59,12 +60,27 @@ export const Header = ({
       textColor = "text-black";
   }
 
+  let positionClass;
+  switch (selectedPosition) {
+    case "top Sticky":
+      positionClass = "sticky top-0";
+      break;
+    case "top static":
+      positionClass = "top-0";
+      break;
+    case "bottom static":
+      positionClass = "absolute bottom-0 inset-x-auto";
+      break;
+    default:
+      positionClass = "";
+  }
+
   return (
     !isHidden && (
       <div
-      className={`header w-full h-20 flex items-center justify-center ${backgroundColor}`}
+      className={`header w-full h-20 flex items-center justify-center ${backgroundColor} ${positionClass}`}
       >
-        <div className="header-inner flex gap-8">
+        <div className="header-inner flex items-center justify-center gap-8">
           <h1 className={`header-text text-2xl font-bold truncate ${textColor}`}>
             {timerTitle}
           </h1>
@@ -82,13 +98,13 @@ export const Header = ({
             secondsText={secondsText}
           />
           <button
-            className={`flex justify-center items-center w-[160px] h-[38px] px-4 py-2 rounded-md text-2xl font-bold truncate ${textColor} ${buttonColor}`}
+            className={`w-[160px] h-[38px] rounded-md text-2xl font-bold truncate ${textColor} ${buttonColor}`}
             onClick={handleRedirect}
           >
             {buttonTitle}
           </button>
           {isCloseButtonOn && (
-            <button type="button" className="flex justify-center items-center" onClick={handleClick}>
+            <button type="button" onClick={handleClick}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

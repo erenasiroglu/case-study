@@ -186,6 +186,7 @@ export const TimerSettings = ({
         <Input
           onChange={handleRemainingTimePeriodChange}
           defaultValue={remainingTimePeriod}
+          customWidthClass="w-[64px]"
         />
       </div>
       <div className="mb-4 flex flex-col">

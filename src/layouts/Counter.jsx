@@ -20,26 +20,12 @@ export const Counter = ({
   secondsText,
 }) => {
 
-  // let positionClass;
-  // switch (selectedPosition) {
-  //   case "top Sticky":
-  //     positionClass = "sticky top-0";
-  //     break;
-  //   case "top static":
-  //     positionClass = "top-0";
-  //     break;
-  //   case "bottom static":
-  //     positionClass = "bottom-2";
-  //     break;
-  //   default:
-  //     positionClass = "";
-  // }
   
   console.log("selected Position", selectedPosition)
 
   return (
-    <div className={`bg-gray-200 p-8 w-full h-full bg-[#E5E6E4]`}>
-      <div className={`bg-[#FAF9F9] shadow-md h-full`}>
+    <div className={`bg-gray-200 p-8 w-full h-[720px] bg-[#E5E6E4]`}>
+      <div className={`bg-[#FAF9F9] shadow-md h-[656px]`}>
         <Header
           selectedTheme={selectedTheme || "Light"}
           isCloseButtonOn={isCloseButtonOn}
