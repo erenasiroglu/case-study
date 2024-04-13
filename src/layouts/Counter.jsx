@@ -19,10 +19,6 @@ export const Counter = ({
   minutesText,
   secondsText,
 }) => {
-
-  
-  console.log("selected Position", selectedPosition)
-
   return (
     <div className={`bg-gray-200 p-8 w-full h-[720px] bg-[#E5E6E4]`}>
       <div className={`bg-[#FAF9F9] shadow-md h-[656px]`}>

@@ -62,17 +62,17 @@ export const Header = ({
 
   let positionClass;
   switch (selectedPosition) {
-    case "top Sticky":
+    case "top sticky":
       positionClass = "sticky top-0";
       break;
     case "top static":
-      positionClass = "top-0";
+      positionClass = "static top-0";
       break;
     case "bottom static":
-      positionClass = "absolute bottom-0 inset-x-auto";
+      positionClass = "relative top-[576px]";
       break;
     default:
-      positionClass = "";
+      positionClass = "sticky top-0";
   }
 
   return (

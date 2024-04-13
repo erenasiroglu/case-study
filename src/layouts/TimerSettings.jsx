@@ -24,7 +24,7 @@ export const TimerSettings = ({
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [timerTitle, setTimerTitle] = useState("Black Friday Sale");
   const [remainingTimePeriod, setRemainingTimePeriod] = useState(120);
-  const [selectedPosition, setSelectedPosition] = useState("");
+  const [selectedPosition, setSelectedPosition] = useState("top sticky");
   const [selectedTimePeriod, setSelectedTimePeriod] = useState("days");
   const [buttonTitle, setButtonTitle] = useState("Shop Now!");
   const [buttonLink, setButtonLink] = useState("www.stripe.com");
@@ -59,7 +59,6 @@ export const TimerSettings = ({
     const position = event.target.value;
     setSelectedPosition(position);
     onPositionChange(position);
-    selectedPosition ? setSelectedPosition("") : setSelectedPosition(position);
   };
 
   const handleRemainingTimePeriodChange = (value) => {
@@ -74,7 +73,6 @@ export const TimerSettings = ({
     setSelectedTimePeriod(value);
     onSelectedTimePeriodChange(value);
   };
-
 
   const handleCheckboxChange = (name) => {
     switch (name) {
@@ -159,6 +157,7 @@ export const TimerSettings = ({
             value="days"
             label="Days"
             onChange={() => handleTimePeriodChange("days")}
+            checked={selectedTimePeriod === "days"}
           />
           <Radio
             id="hours"
@@ -166,16 +165,23 @@ export const TimerSettings = ({
             value="hours"
             label="Hours"
             onChange={() => handleTimePeriodChange("hours")}
+            checked={selectedTimePeriod === "hours"}
           />
           <Radio
+            id="minutes"
             name="timePeriod"
+            value="minutes"
             label="Minutes"
             onChange={() => handleTimePeriodChange("minutes")}
+            checked={selectedTimePeriod === "minutes"}
           />
           <Radio
+            id="seconds"
             name="timePeriod"
+            value="seconds"
             label="Seconds"
             onChange={() => handleTimePeriodChange("seconds")}
+            checked={selectedTimePeriod === "seconds"}
           />
         </div>
       </div>
@@ -193,22 +199,28 @@ export const TimerSettings = ({
         <div className="block mb-4 text-base font-semibold">Positioning</div>
         <div className="flex flex-row gap-2.5">
           <Radio
+            id="top-sticky"
             name="position"
-            value="top Sticky"
+            value="top sticky"
             label="Top Sticky"
             onChange={(value) => handlePositionChange(value)}
+            checked={selectedPosition === "top sticky"}
           />
           <Radio
+            id="top-static"
             name="position"
             value="top static"
             label="Top Static"
             onChange={(value) => handlePositionChange(value)}
+            checked={selectedPosition === "top static"}
           />
           <Radio
+            id="bottom-static"
             name="position"
             value="bottom static"
             label="Bottom Static"
             onChange={(value) => handlePositionChange(value)}
+            checked={selectedPosition === "bottom static"}
           />
         </div>
       </div>
@@ -219,21 +231,25 @@ export const TimerSettings = ({
         </div>
         <div className="flex flex-row gap-2.5 mb-4">
           <Checkbox
+            id="days-checkbox"
             label="Days"
             checked={showDays}
             onChange={(isChecked) => handleCheckboxChange("days", isChecked)}
           />
           <Checkbox
+            id="hours-checkbox"
             label="Hours"
             checked={showHours}
             onChange={(isChecked) => handleCheckboxChange("hours", isChecked)}
           />
           <Checkbox
+            id="minutes-chexkbox"
             label="Minutes"
             checked={showMinutes}
             onChange={(isChecked) => handleCheckboxChange("minutes", isChecked)}
           />
           <Checkbox
+            id="seconds-checkbox"
             label="Seconds"
             checked={showSeconds}
             onChange={(isChecked) => handleCheckboxChange("seconds", isChecked)}
@@ -241,20 +257,44 @@ export const TimerSettings = ({
         </div>
         <div className="period-labels">
           <div className="mr-2 mb-4 text-base font-semibold">Days Label</div>
-          <Input placeholder="Days" onChange={handleDaysTextChange} defaultValue={daysText} />
+          <Input
+            placeholder="Days"
+            onChange={handleDaysTextChange}
+            defaultValue={daysText}
+          />
           <div className="mr-2 mb-4 text-base font-semibold">Hours Label</div>
-          <Input placeholder="Hours" onChange={handleHoursTextChange} defaultValue={hoursText} />
+          <Input
+            placeholder="Hours"
+            onChange={handleHoursTextChange}
+            defaultValue={hoursText}
+          />
           <div className="mr-2 mb-4 text-base font-semibold">Minutes Label</div>
-          <Input placeholder="Minutes" onChange={handleMinutesTextChange} defaultValue={minutesText} />
+          <Input
+            placeholder="Minutes"
+            onChange={handleMinutesTextChange}
+            defaultValue={minutesText}
+          />
           <div className="mr-2 mb-4 text-base font-semibold">Seconds Label</div>
-          <Input placeholder="Seconds" onChange={handleSecondsTextChange} defaultValue={secondsText} />
+          <Input
+            placeholder="Seconds"
+            onChange={handleSecondsTextChange}
+            defaultValue={secondsText}
+          />
         </div>
         <div>
           <h1 className="text-2xl font-semibold mb-4">Button Settings</h1>
           <div className="mr-2 mb-4 text-base font-semibold">Button Text</div>
-          <Input placeholder="Shop Now!" onChange={handleButtonTitleChange} defaultValue={buttonTitle} />
+          <Input
+            placeholder="Shop Now!"
+            onChange={handleButtonTitleChange}
+            defaultValue={buttonTitle}
+          />
           <div className="mr-2 mb-4 text-base font-semibold">Button Link </div>
-          <Input placeholder="www.stripe.com" onChange={handleButtonLinkChange} defaultValue={buttonLink} />
+          <Input
+            placeholder="www.stripe.com"
+            onChange={handleButtonLinkChange}
+            defaultValue={buttonLink}
+          />
         </div>
       </div>
     </div>

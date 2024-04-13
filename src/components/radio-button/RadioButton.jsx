@@ -1,5 +1,6 @@
 import React from 'react';
-import './style.css'
+import { ReactComponent as RadioCheckedSVG } from '../../lib/icon/radio.svg';
+import { ReactComponent as RadioUncheckedSVG } from '../../lib/icon/radio_unchecked.svg';
 
 export const RadioButton = ({ id, name, value, checked, onChange, label }) => {
   return (
@@ -11,10 +12,15 @@ export const RadioButton = ({ id, name, value, checked, onChange, label }) => {
         value={value}
         checked={checked}
         onChange={onChange}
-        className="form-radio h-4 w-4 bg-black transition duration-150 ease-in-out"
+        className="hidden"
       />
-      <label htmlFor={id} className="ml-1 text-sm text-gray-500">
-        {label}
+      <label htmlFor={id} className={`ml-1 text-sm cursor-pointer ${checked ? 'text[#0A0908]' : 'text-gray-500'}` }>
+        <div className="flex items-center">
+          <span className="w-4 h-4 mr-1">
+            {checked ? <RadioCheckedSVG /> : <RadioUncheckedSVG />}
+          </span>
+          {label}
+        </div>
       </label>
     </div>
   );
