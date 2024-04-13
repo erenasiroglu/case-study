@@ -12,7 +12,12 @@ export const Checkbox = ({ id, label, checked, onChange }) => {
         onChange={onChange}
         className="hidden"
       />
-      <label htmlFor={id} className={`ml-1 text-sm cursor-pointer ${checked ? 'text[#0A0908]' : 'text-gray-500'}` }>
+      <label
+        htmlFor={id}
+        className={`ml-1 text-sm cursor-pointer ${
+          checked ? "text[#0A0908]" : "text-gray-500"
+        }`}
+      >
         <div className="flex items-center">
           <span className="w-4 h-4 mr-1">
             {checked ? <CheckboxCheckedSVG /> : <CheckboxUncheckedSVG />}

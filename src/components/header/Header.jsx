@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Timer from "../timer/Timer";
-import "./styles.css";
 
 export const Header = ({
   selectedTheme,
@@ -36,7 +35,7 @@ export const Header = ({
       window.open("http://" + buttonLink, "_blank");
     }
   };
-  
+
   let backgroundColor;
   let buttonColor;
   let textColor;
@@ -44,16 +43,16 @@ export const Header = ({
   switch (selectedTheme) {
     case "Light":
       backgroundColor = "bg-white";
-      buttonColor = "bg-[#248277]"
+      buttonColor = "bg-[#248277]";
       break;
     case "Dark":
       backgroundColor = "bg-black";
-      buttonColor = "bg-[#248277]"
+      buttonColor = "bg-[#248277]";
       textColor = "text-white";
       break;
     case "Colorful":
       backgroundColor = "bg-[#248277]";
-      buttonColor = "bg-[#9FCFCA]"
+      buttonColor = "bg-[#9FCFCA]";
       break;
     default:
       backgroundColor = "bg-white";
@@ -78,10 +77,12 @@ export const Header = ({
   return (
     !isHidden && (
       <div
-      className={`header w-full h-20 flex items-center justify-center ${backgroundColor} ${positionClass}`}
+        className={`header w-full h-20 flex items-center justify-center ${backgroundColor} ${positionClass}`}
       >
         <div className="header-inner flex items-center justify-center gap-8">
-          <h1 className={`header-text text-2xl font-bold truncate ${textColor}`}>
+          <h1
+            className={`header-text w-[202px] flex items-center justify-center text-2xl font-bold truncate ${textColor}`}
+          >
             {timerTitle}
           </h1>
           <Timer
@@ -124,7 +125,7 @@ export const Header = ({
         </div>
       </div>
     )
-  );  
+  );
 };
 
 export default Header;

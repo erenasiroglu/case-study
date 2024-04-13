@@ -105,27 +105,27 @@ export const TimerSettings = ({
   const handleButtonLinkChange = (value) => {
     setButtonLink(value);
     onButtonLinkChange(value);
-  }
+  };
 
   const handleDaysTextChange = (value) => {
     setDaysText(value);
     onDaysTextChange(value);
-  }
+  };
 
   const handleHoursTextChange = (value) => {
     setHoursText(value);
     onHoursTextChange(value);
-  }
+  };
 
   const handleMinutesTextChange = (value) => {
     setMinutesText(value);
     onMinutesTextChange(value);
-  }
+  };
 
   const handleSecondsTextChange = (value) => {
     setSecondsText(value);
     onSecondsTextChange(value);
-  }
+  };
 
   return (
     <div className="timer-settings p-8">

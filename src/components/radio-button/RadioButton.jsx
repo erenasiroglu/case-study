@@ -1,6 +1,6 @@
-import React from 'react';
-import { ReactComponent as RadioCheckedSVG } from '../../lib/icon/radio.svg';
-import { ReactComponent as RadioUncheckedSVG } from '../../lib/icon/radio_unchecked.svg';
+import React from "react";
+import { ReactComponent as RadioCheckedSVG } from "../../lib/icon/radio.svg";
+import { ReactComponent as RadioUncheckedSVG } from "../../lib/icon/radio_unchecked.svg";
 
 export const RadioButton = ({ id, name, value, checked, onChange, label }) => {
   return (
@@ -14,7 +14,12 @@ export const RadioButton = ({ id, name, value, checked, onChange, label }) => {
         onChange={onChange}
         className="hidden"
       />
-      <label htmlFor={id} className={`ml-1 text-sm cursor-pointer ${checked ? 'text[#0A0908]' : 'text-gray-500'}` }>
+      <label
+        htmlFor={id}
+        className={`ml-1 text-sm cursor-pointer ${
+          checked ? "text[#0A0908]" : "text-gray-500"
+        }`}
+      >
         <div className="flex items-center">
           <span className="w-4 h-4 mr-1">
             {checked ? <RadioCheckedSVG /> : <RadioUncheckedSVG />}
